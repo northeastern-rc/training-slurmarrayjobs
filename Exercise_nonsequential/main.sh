@@ -11,6 +11,8 @@
 # Change 'WORKDIR' based on desired location
 WORKDIR=$PWD/masks
 
-ENTRIES=$(ls $WORKDIR | grep sub | wc -l)
+# Count number of sub-directories inside $WORKDIR with 'sub' in their
+# names
+ENTRIES=$(find $WORKDIR -type d -name "sub*" | wc -l)
 
 sbatch --array=1-$ENTRIES array_job_nonsequence.sh

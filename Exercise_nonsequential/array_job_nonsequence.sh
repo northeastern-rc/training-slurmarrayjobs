@@ -25,7 +25,9 @@ module load anaconda3/2022.01
 BASEDIR=$PWD
 WORKDIR=$PWD/masks
 
-ls $WORKDIR | grep sub > filelist.txt
+# Find sub-directories inside $WORKDIR with 'sub' in their names and
+# redirect the output to filelist.txt
+find $WORKDIR -type d -name "sub*" > filelist.txt
 
 cd $BASEDIR
 echo "In $BASEDIR"
