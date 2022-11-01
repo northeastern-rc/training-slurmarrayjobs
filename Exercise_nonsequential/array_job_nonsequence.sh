@@ -7,7 +7,6 @@
 #SBATCH -J slurm_python
 #SBATCH --partition=reservation                                                                                                                                                                                    
 #SBATCH --reservation=fall_training_cpu_2022
-#SBATCH --partition=express
 #SBATCH -o %A_%a.o 
 #SBATCH -e %A_%a.e 
 #SBATCH --nodes=1
