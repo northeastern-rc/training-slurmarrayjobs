@@ -6,7 +6,7 @@
 
 #####Use during training###############
 #SBATCH --partition=reservation
-#SBATCH --reservation=fall2022_cpu_training
+#SBATCH --reservation=fall_training_cpu_2022
 #######################################
 
 #####Use during &after training######
