@@ -17,9 +17,9 @@ module load discovery anaconda3/2021.05
 source activate 
 
 # Run the python code on a particular list, where each list to be
-# processed could be read from a file (all-lists).  
-# Each job task array would process a different row and the output of
-# the python code would be redirected to its corresponding output
+# processed could be read from a file (all-lists).  Each job task
+# array would process a row corresponding to its job ID and the output
+# of the python code would be redirected to its corresponding output
 # file.
 list_name=`sed "${SLURM_ARRAY_TASK_ID}q;d" all-lists`  ## get current row from file
 python getMax.py $list_name > output.$list_name        ## process current filename
