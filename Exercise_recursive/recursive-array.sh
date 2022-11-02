@@ -34,6 +34,9 @@ then
     exit
 fi
 
+# Load the latest anaconda module to get the latest python version
+module load anaconda3/2022.05
+
 # To keep track of Iteration, create a counter
 MULTIPLIER=$1
 if [ -z "$MULTIPLIER" ]
