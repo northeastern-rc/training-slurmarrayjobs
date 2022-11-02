@@ -5,7 +5,7 @@
 # name sub-blast located inside a work directory.
 
 #SBATCH -J slurm_python
-#SBATCH --partition=reservation                                                                                                                                                                                    
+#SBATCH --partition=reservation  # Use a regular partition such as "express" when not in training & remove --reservation 
 #SBATCH --reservation=fall_training_cpu_2022
 #SBATCH -o %A_%a.o 
 #SBATCH -e %A_%a.e 
@@ -15,11 +15,6 @@
 #SBATCH --time=00:20:00
 #SBATCH --mem=4G 
 
-# Use a regular partition, such as express, when not in a training                                                                                                                                                                  
-# session                                                                                                                                                                                                                   
-##SBATCH --partition=express
-
-module load anaconda3/2022.01
 
 # Change 'BASEDIR' and 'WORKDIR' based on desired locations
 BASEDIR=$PWD
