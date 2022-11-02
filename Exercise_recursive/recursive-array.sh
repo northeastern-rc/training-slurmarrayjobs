@@ -8,7 +8,7 @@
 #   For example:
 #   sbatch recursive-array.sh 1 60000
 
-#SBATCH --partition=reservation                                                                                                                                                                                    
+#SBATCH --partition=reservation # Use a regular partition such as "express" when not in training & remove --reservation 
 #SBATCH --reservation=fall_training_cpu_2022
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
