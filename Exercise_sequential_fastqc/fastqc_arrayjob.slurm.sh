@@ -1,15 +1,7 @@
 #!/bin/bash
 
-#####Use after training##############
-##SBATCH -p short
-#####################################
-
-#####Use during training###############
-#SBATCH --partition=reservation
+#SBATCH --partition=reservation  # Use a regular partition such as "express" when not in training & remove --reservation 
 #SBATCH --reservation=fall_training_cpu_2022
-#######################################
-
-#####Use during &after training######
 #SBATCH --nodes 1
 #SBATCH --cpus-per-task=1
 #SBATCH -t 1:00:00
