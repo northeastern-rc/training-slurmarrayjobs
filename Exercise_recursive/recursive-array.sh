@@ -16,10 +16,6 @@
 #SBATCH --mem-per-cpu=100M
 #SBATCH --array=[0-4]
 
-# Use a regular partition, such as express, when not in a training                                                                                                                                                                  
-# session                                                                                                                                                                                                                   
-##SBATCH --partition=express
-
 # Does not redirect output or error to files.
 
 # Check if max limit for jobs is provided by the user or not
