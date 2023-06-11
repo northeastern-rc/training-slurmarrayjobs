@@ -70,10 +70,12 @@ then
   exit
 fi
 
+echo "At Offset $OFFSET and folder number $FOLDER_NUMBER for task ID $SLURM_ARRAY_TASK_ID"
+
 cd $BASEDIR
 echo "In $BASEDIR"
 
-entryname=$(awk "NR==${FOLDER_NUMBER+1}" joblist.txt)
+entryname=$(awk "NR==$((FOLDER_NUMBER+1))" joblist.txt)
 
 echo "Job array ID: $SLURM_ARRAY_JOB_ID , sub-job $SLURM_ARRAY_TASK_ID is running!"
 echo "Sub-job $SLURM_ARRAY_TASK_ID is processing $entryname"
