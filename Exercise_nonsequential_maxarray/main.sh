@@ -8,7 +8,7 @@
 
 # Usage:
 # ./main.sh input-folder-name type keyword output-folder-name
-# For example: ./main.sh FilesfromPARTGUI f nb* nboutput
+# For example: ./main.sh directories f job.sh output
 
 # Change 'WORKDIR' based on desired location
 WORKDIR=$PWD/$1
@@ -42,9 +42,18 @@ ENTRIES=$(find $WORKDIR -type $TYPE -name "*$KEYWORD*" | wc -l)
 
 echo "Number of entries are $ENTRIES"
 
-# if $ENTRIES > MaxArraySize=1001 then do chunking
-# Get the quotient of $ENTRIES/MaxArraySize (1000) and round it up
-# Start a loop with the rounded up number as the upper limit 
-# Call sbatch with --array=1-i in each iteration
-
-sbatch --array=1-$ENTRIES array_job_massexpt.sh $1 $2 $3 $4 
+# ENTRIES is the number of files/folders that need to be processed
+# Each iteration of this loop schedules a sbatch with an array size of
+# LIMIT. Thus, each iteration of this loop will process ENTRIES,
+# compare it to MAX_ARRAY_SIZE, and assign the leser value to
+# LIMIT. The OFFSET and ENTRIES will be updated based on their
+# original values and the value of LIMIT.
+OFFSET=0
+MAX_ARRAY_SIZE=1000
+while [[ $ENTRIES -gt 0 ]]
+do
+    LIMIT=$(( ENTRIES > MAX_ARRAY_SIZE ? MAX_ARRAY_SIZE - 1 : ENTRIES - 1 ))
+    sbatch --array=0-$LIMIT array_script.sh $1 $2 $3 $4 $OFFSET
+    OFFSET=$((OFFSET + (LIMIT + 1) ))
+    ENTRIES=$(( ENTRIES - (LIMIT + 1) ))
+done
