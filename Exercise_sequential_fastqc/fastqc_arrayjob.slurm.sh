@@ -16,7 +16,7 @@
 
 # Load the system wide fastqc module & dependency module 
 module load oracle_java/jdk1.8.0_181
-module load fastqc
+module load fastqc/0.11.8
 
 #Run fastqc on each sample using the SLURM_ARRAY_TASK_ID environmental variable
 fastqc wgEncode${SLURM_ARRAY_TASK_ID}_Sub.fq 
