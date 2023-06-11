@@ -37,7 +37,7 @@ then
     exit
 fi
 
-echo "type if $TYPE" 
+echo "type of entry is $TYPE" 
 
 # Check if the keyword to search for desired input files is provided                                                                
 # by the user or not                                                                                                                    
@@ -56,19 +56,19 @@ then
   OFFSET=0
 fi
 
-# If no more folders to process, then exit                                                                                                                           
-FOLDER_NUMBER=$((OFFSET + SLURM_ARRAY_TASK_ID))
-if [ $((FOLDER_NUMBER)) -ge ${JOBLIMIT} ]
-then
-  exit
-fi
-
 # Find entries inside $WORKDIR with given keyword in their names and
 # redirect the output to joblist.txt
 rm -f joblist.txt
 find $WORKDIR -type $TYPE -name "*$KEYWORD*" 2> /dev/null > joblist.txt
 ENTRIES=$(wc -l joblist.txt | awk '{print $1}')
 echo "Number of entries are $ENTRIES"
+
+# If no more folders to process, then exit                                                                                                                                                                                                       
+FOLDER_NUMBER=$((OFFSET + SLURM_ARRAY_TASK_ID))
+if [ $((FOLDER_NUMBER)) -ge ${ENTRIES} ]
+then
+  exit
+fi
 
 cd $BASEDIR
 echo "In $BASEDIR"
