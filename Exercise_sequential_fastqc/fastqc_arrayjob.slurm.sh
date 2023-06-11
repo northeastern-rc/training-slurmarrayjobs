@@ -10,8 +10,6 @@
 #SBATCH --output=%A-%a.out
 #SBATCH --error=%A-%a.err
 #SBATCH --array=1-3%3 ## This will submit an array of 3 jobs, all 3 at the same time
-#SBATCH --mail-type=END,FAIL
-#SBATCH --mail-user=m.joshi@northeastern.edu
 
 
 # Load the system wide fastqc module & dependency module 
