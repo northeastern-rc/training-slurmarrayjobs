@@ -35,7 +35,7 @@ MAX_ARRAY_SIZE=1000
 while [[ $ENTRIES -gt 0 ]]
 do
     LIMIT=$(( ENTRIES > MAX_ARRAY_SIZE ? MAX_ARRAY_SIZE - 1 : ENTRIES - 1 ))
-    sbatch --array=0-$LIMIT array_script.sh $OFFSET
+    sbatch --array=0-$LIMIT array_script_rmlater.sh $OFFSET
     OFFSET=$((OFFSET + (LIMIT + 1) ))
     ENTRIES=$(( ENTRIES - (LIMIT + 1) ))
 done
