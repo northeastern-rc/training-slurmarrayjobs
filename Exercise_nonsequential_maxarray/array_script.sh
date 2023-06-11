@@ -13,7 +13,7 @@
 # array_script.sh <input-folder-name> <type> <keyword> <output-folder-name> <offset>                                                                     
 # For example: array_script.sh directories f job.sh output 0                        
 
-#SBATCH -J mass_expt_test
+#SBATCH -J max_array_sample
 #SBATCH --partition=reservation  # Use a regular partition such as "express" when not in training & remove --reservation                                  
 #SBATCH --reservation=bootcamp_cpu_2023
 #SBATCH -o %A_%a.o 
@@ -24,7 +24,7 @@
 #SBATCH --time=00:20:00
 #SBATCH --mem=4G 
 
-# Change 'BASEDIR' and 'WORKDIR' based on desired locations
+# Declare 'BASEDIR' and 'WORKDIR' based on desired locations
 BASEDIR=$PWD
 WORKDIR=$PWD/$1
 OUTDIR=$PWD/$4
