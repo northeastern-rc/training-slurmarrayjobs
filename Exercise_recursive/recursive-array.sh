@@ -9,7 +9,7 @@
 #   sbatch recursive-array.sh 1 60000
 
 #SBATCH --partition=reservation # Use a regular partition such as "express" when not in training & remove --reservation 
-#SBATCH --reservation=fall_training_cpu_2022
+#SBATCH --reservation=bootcamp_cpu_2023
 #SBATCH --nodes=1
 #SBATCH --cpus-per-task=1
 #SBATCH --time=01:00:00

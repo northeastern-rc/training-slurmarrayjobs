@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH -J getMax 		##set job name 
 #SBATCH --partition=reservation # Use a regular partition such as "express" when not in training & remove --reservation 
-#SBATCH --reservation=fall_training_cpu_2022
+#SBATCH --reservation=bootcamp_cpu_2023
 #SBATCH --nodes=1		#set node number to 1
 #SBATCH --ntasks=1		#set number of tasks (CPUs) to 1
 #SBATCH --array=1-4%4 		#create 4 array jobs, run all 4 at a time.

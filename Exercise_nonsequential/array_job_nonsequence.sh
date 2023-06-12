@@ -6,7 +6,7 @@
 
 #SBATCH -J slurm_python
 #SBATCH --partition=reservation  # Use a regular partition such as "express" when not in training & remove --reservation 
-#SBATCH --reservation=fall_training_cpu_2022
+#SBATCH --reservation=bootcamp_cpu_2023
 #SBATCH -o %A_%a.o 
 #SBATCH -e %A_%a.e 
 #SBATCH --nodes=1
