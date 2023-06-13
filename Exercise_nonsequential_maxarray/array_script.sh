@@ -56,10 +56,7 @@ then
   OFFSET=0
 fi
 
-# Find entries inside $WORKDIR with given keyword in their names and
-# redirect the output to joblist.txt
-rm -f joblist.txt
-find $WORKDIR -type $TYPE -name "*$KEYWORD*" 2> /dev/null > joblist.txt
+# Find entries inside $WORKDIR using joblist.txt 
 ENTRIES=$(wc -l joblist.txt | awk '{print $1}')
 echo "Number of entries are $ENTRIES"
 

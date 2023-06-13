@@ -40,6 +40,11 @@ echo "keyword is $KEYWORD"
 # names
 ENTRIES=$(find $WORKDIR -type $TYPE -name "*$KEYWORD*" | wc -l)
 
+# Find entries inside $WORKDIR with given keyword in their names and                                                              
+# redirect the output to joblist.txt                                                                                                    
+rm -f joblist.txt
+find $WORKDIR -type $TYPE -name "*$KEYWORD*" 2> /dev/null > joblist.txt
+
 echo "Number of entries are $ENTRIES"
 
 # ENTRIES is the number of files/folders that need to be processed
